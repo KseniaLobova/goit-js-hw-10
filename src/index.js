@@ -60,7 +60,7 @@ function onSelectChange(evt) {
 
 
 
-// розмітка з інфою кота
+//витягуємо інфу кота
 function creatMarkup(data) {
   
     const { url, breeds } = data[0];
