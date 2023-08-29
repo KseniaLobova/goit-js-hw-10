@@ -17,7 +17,7 @@ select.addEventListener('change', onSelectChange);
 error.classList.add('is-hidden')
 
 
-
+ select.classList.add('is-hidden')
 
 
 
@@ -32,7 +32,8 @@ function getList() {
         new SlimSelect({
             select: select
 })
-  loader.classList.add('is-hidden')
+      loader.classList.add('is-hidden')
+        select.classList.remove('is-hidden')
     })
      .catch(error => {
            Notiflix.Notify.failure('Oops! Something went wrong! Try reloading the page!')
@@ -45,15 +46,21 @@ getList()
 
 // вибір котика
 function onSelectChange(evt) {
-   loader.classList.remove('is-hidden')
+    select.classList.add('is-hidden')
+  catInfo.classList.add('is-hidden')
+    loader.classList.remove('is-hidden')
+     
 //   console.log(evt.target.value)
     const selectedId = evt.target.value;
+ 
     //   console.log(selectedId)
     fetchCatByBreed(selectedId)
         .then(data => {
+              
             creatMarkup(data)
+catInfo.classList.remove('is-hidden')
         })
-       
+      
         
     .catch(err=> Notiflix.Notify.failure("Oops! Something went wrong! Try reloading the page!"))
 }
@@ -62,7 +69,7 @@ function onSelectChange(evt) {
 
 //витягуємо інфу кота
 function creatMarkup(data) {
-  
+ 
     const { url, breeds } = data[0];
     const { temperament, description, name } = breeds[0];
 
