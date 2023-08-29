@@ -62,7 +62,9 @@ catInfo.classList.remove('is-hidden')
         })
       
         
-    .catch(err=> Notiflix.Notify.failure("Oops! Something went wrong! Try reloading the page!"))
+        .catch(err => { loader.classList.add('is-hidden')
+            Notiflix.Notify.failure("Oops! Something went wrong! Try reloading the page!")
+        })
 }
 
 
